@@ -1,4 +1,3 @@
-# Furnish Free Bootstrap 5 Furniture Website Template
 
 #### Preview
 
