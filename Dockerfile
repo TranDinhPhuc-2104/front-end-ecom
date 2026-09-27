@@ -7,14 +7,9 @@ COPY . .
 RUN npm run build
 
 # Run stage
-FROM public.ecr.aws/docker/library/node:24-alpine
-WORKDIR /app
-ENV NODE_ENV=production
+FROM nginx:alpine
 
-COPY package*.json ./
-RUN npm ci --omit=dev
+COPY --from=build /app/dist /usr/share/nginx/html
 
-COPY --from=build /app/dist ./dist
-
-EXPOSE 3000
-CMD ["node", "dist/index.js"]
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
