@@ -3,10 +3,10 @@
  * Centralized settings for backend API connectivity
  */
 export const API_CONFIG = {
-  // Can be configured via environment variable VITE_API_BASE_URL or defaults to localhost:8080
+  // Can be configured via environment variable VITE_API_BASE_URL or defaults to /api
   BASE_URL: (typeof import.meta !== 'undefined' && import.meta.env && import.meta.env.VITE_API_BASE_URL)
     ? import.meta.env.VITE_API_BASE_URL
-    : 'http://localhost:8080',
+    : '/api',
   
   // Storage keys for authentication tokens
   USER_TOKEN_KEY: 'token',

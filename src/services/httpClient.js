@@ -55,9 +55,11 @@ export const httpClient = {
    * Builds the full URL with query parameters
    */
   buildUrl(endpoint, params = {}) {
+    const baseUrl = (API_CONFIG.BASE_URL || '').replace(/\/+$/, '');
+    const cleanEndpoint = endpoint.startsWith('/') ? endpoint : `/${endpoint}`;
     let url = endpoint.startsWith('http://') || endpoint.startsWith('https://')
       ? endpoint
-      : `${API_CONFIG.BASE_URL}${endpoint.startsWith('/') ? '' : '/'}${endpoint}`;
+      : `${baseUrl}${cleanEndpoint}`;
 
     const queryKeys = Object.keys(params).filter(
       key => params[key] !== undefined && params[key] !== null && params[key] !== ''
