@@ -1,0 +1,509 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Products eCommerce Bootstrap HTML Template - Furnish</title>
+  <link rel="stylesheet" href="../assets/furnish-assets/scss/style.scss">
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg bg-white shadow-sm px-4 py-3 navbar-custom">
+    <div class="container-fluid px-0">
+      <a class="navbar-brand" href="index.html">
+        <span class="d-flex flex-column text-uppercase text-xs fw-bold lh-sm">
+          <span class="" style="letter-spacing: .12rem;">Furnish</span>
+          <span>Template</span>
+        </span></a>
+
+      <div class="mx-auto d-lg-block d-none">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link active" aria-current="page" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About us</a></li>
+          <li class="nav-item"><a class="nav-link" href="products.html">Products</a></li>
+        </ul>
+      </div>
+
+      <div class="d-flex align-items-center gap-4">
+        <span id="nav-greeting" class="fw-bold text-success d-none" style="font-size: 0.95rem;"></span>
+
+        <a href="cart.html" class="text-dark position-relative me-2 text-decoration-none">
+          <i class="bi bi-cart fs-5"></i>
+          <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="cart-badge"
+            style="font-size: 0.65rem;">0</span>
+        </a>
+
+        <div class="dropdown">
+          <a class="text-dark-hover" href="#" role="button" id="navbarDropdownMenu" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-list"
+              viewBox="0 0 16 16">
+              <path fill-rule="evenodd"
+                d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5" />
+            </svg>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end shadow border-0 mt-2" aria-labelledby="navbarDropdownMenu">
+            <li><a class="dropdown-item py-2" href="profile.html">My Profile</a></li>
+
+            <li><a class="dropdown-item py-2" href="my-orders.html">My Orders</a></li>
+
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li><a class="dropdown-item py-2" id="auth-link" href="#">Login</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <main>
+    <section class="py-lg-8 py-5 text-center">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-6">
+            <h1 class="display-5 mb-3">Product List</h1>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-lg-8 py-5">
+      <div class="container">
+        <div class="row">
+          <aside class="col-lg-3 mb-4">
+            <h3 class="fw-semibold mb-3 h5">Filters</h3>
+            <div class="mb-4 bg-light border bg-opacity-50 p-4">
+              <h6 class="fw-semibold mb-3 text-xs text-uppercase">Category</h6>
+              <ul class="list-unstyled lh-lg small mb-0" id="category-container">
+                <li class="text-muted">Đang tải danh mục...</li>
+              </ul>
+            </div>
+          </aside>
+
+          <div class="col-lg-9">
+            <div class="row g-4 mb-4">
+              <div class="col-12">
+                <div class="row g-3 align-items-center">
+                  <div class="col-sm-6 col-md-5">
+                    <div class="input-group">
+                      <input type="text" id="search-input" class="form-control"
+                        placeholder="Tìm kiếm sản phẩm theo tên...">
+                      <button class="btn btn-dark" type="button" id="btn-search">
+                        <i class="bi bi-search"></i>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="col-sm-6 col-md-4 offset-md-3 offset-lg-3 col-lg-3">
+                    <select class="form-select" id="sort-select">
+                      <option value="featured" selected>Sort by: Featured</option>
+                      <option value="Best selling">All Product</option>
+                      <option value="lowToHigh">Price, low to high</option>
+                      <option value="highToLow">Price, high to low</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row g-4" id="product-container">
+              <div class="col-12 text-center my-5">
+                <p class="text-muted">Đang tải danh sách sản phẩm...</p>
+              </div>
+            </div>
+
+            <nav class="mt-5">
+              <ul class="pagination justify-content-center">
+                <li class="page-item disabled"><a class="page-link" href="#">«</a></li>
+                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">»</a></li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="bg-dark  pt-8 footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 col-md-4 col-12">
+          <a class="navbar-brand" href="#">
+            <span class="d-flex flex-column text-uppercase text-xs fw-bold lh-sm">
+              <span class="" style="letter-spacing: .12rem;">Furnish</span>
+              <span>Template</span>
+            </span></a>
+        </div>
+        <div class="col-lg-8 col-md-6 mb-4 d-flex justify-content-start justify-content-md-end gy-4">
+          <ul class="list-unstyled lh-lg d-flex flex-column flex-md-row gap-4">
+            <li><a href="#" class=" ft-links text-decoration-none">Home</a></li>
+            <li><a href="#" class=" ft-links text-decoration-none">Services</a></li>
+            <li><a href="#" class=" ft-links text-decoration-none">Products</a></li>
+            <li><a href="#" class=" ft-links text-decoration-none">About Us</a></li>
+            <li><a href="#" class=" ft-links text-decoration-none">Contact</a></li>
+          </ul>
+        </div>
+        <div class="row justify-content-center align-items-center pt-lg-8 pb-4">
+          <div class="col-lg-6 col-md-6 mb-4">
+            <h2 class="display-3 text-white">We Design all over the world</h2>
+
+          </div>
+
+
+          <div class="col-lg-6 col-md-6 mb-4">
+            <div class="d-flex gap-3 justify-content-start justify-content-lg-end">
+              <a href="#" class="btn btn-outline-light btn-icon"><i class="bi bi-facebook"></i></a>
+              <a href="#" class="btn btn-outline-light btn-icon"><i class="bi bi-twitter"></i></a>
+              <a href="#" class="btn btn-outline-light btn-icon"><i class="bi bi-instagram"></i></a>
+              <a href="#" class="btn btn-outline-light btn-icon"><i class="bi bi-linkedin"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="row justify-content-center align-items-center py-lg-8">
+          <div class="col-lg-6 col-md-6 mb-4">
+            <div class="d-flex flex-column">
+              <span>Email Id</span>
+              <span class="h3 fw-light">Info@example.com</span>
+            </div>
+          </div>
+
+
+          <div class="col-lg-6 col-md-6 mb-4">
+            <div class="d-flex gap-3 justify-content-lg-end">
+              <a href="#" class="btn btn-outline-light">Contact us</a>
+            </div>
+          </div>
+        </div>
+        <hr class="bg-secondary">
+        <div class="row pb-3">
+          <div class="col-md-6 text-center text-md-start">
+            <p class=" mb-0">&copy; 2025 Furnish. Developed by <a href="https://codescandy.com" class="text-white"
+                target="_blank">CodesCandy</a> • Distributed by <a href="https://themewagon.com" class="text-white"
+                target="_blank">ThemeWagon</a>. All rights reserved.</p>
+          </div>
+          <div class="col-md-6 text-center text-md-end">
+            <a href="#" class=" ft-links text-decoration-none me-3">Privacy Policy</a>
+            <a href="#" class=" ft-links text-decoration-none">Terms of Service</a>
+          </div>
+        </div>
+      </div>
+  </footer>
+
+
+  <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+    <div class="offcanvas-header px-4">
+      <a class="navbar-brand" href="#">
+        <span class="d-flex flex-column text-uppercase text-xs fw-bold lh-sm">
+          <span class="" style="letter-spacing: .12rem;">Furnish</span>
+          <span>Template</span>
+        </span></a>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+
+      <div class="navbar-custom">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about.html">About us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="products.html">Products</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="../assets/furnish-assets/js/main.js"></script>
+</body>
+
+</html>
+
+<script type="module">
+  import { productService, categoryService, cartService, authService, uiHelper } from '../services/index.js';
+
+  let currentPage = 1;
+  const pageSize = 6;
+  let currentCategoryId = "all";
+  let currentSort = "featured";
+
+  document.addEventListener("DOMContentLoaded", () => {
+    uiHelper.initCustomerNavbar();
+    loadCategories();
+    fetchProductsByPage(currentPage, currentCategoryId);
+
+    const searchInput = document.getElementById("search-input");
+    const btnSearch = document.getElementById("btn-search");
+
+    const sortSelect = document.getElementById("sort-select");
+    if (sortSelect) {
+      sortSelect.addEventListener("change", (e) => {
+        currentSort = e.target.value;
+        currentPage = 1;
+        fetchProductsByPage(currentPage, currentCategoryId, currentSort);
+      });
+    }
+
+    if (btnSearch && searchInput) {
+      btnSearch.addEventListener("click", () => {
+        handleSearch(searchInput.value.trim());
+      });
+
+      searchInput.addEventListener("keypress", (e) => {
+        if (e.key === "Enter") {
+          handleSearch(searchInput.value.trim());
+        }
+      });
+    }
+  });
+
+  function handleSearch(keyword) {
+    if (keyword !== "") {
+      fetchProductsByName(keyword);
+    } else {
+      currentPage = 1;
+      currentCategoryId = "all";
+      fetchProductsByPage(currentPage, currentCategoryId);
+    }
+  }
+
+  // ==================== XỬ LÝ DANH MỤC (CATEGORY) ====================
+  async function loadCategories() {
+    const cateContainer = document.getElementById("category-container");
+    if (!cateContainer) return;
+    try {
+      const response = await categoryService.getCategories();
+      const categories = response?.result || (Array.isArray(response) ? response : []);
+      cateContainer.innerHTML = "";
+
+      cateContainer.insertAdjacentHTML("beforeend", `
+        <li><a href="#" class="text-dark text-decoration-none d-block py-1 fw-bold category-item active" data-id="all">All Products</a></li>
+      `);
+
+      categories.forEach(cate => {
+        const id = cate.idCate || cate.id;
+        const name = cate.nameCate || cate.name;
+        cateContainer.insertAdjacentHTML("beforeend", `
+          <li><a href="#" class="text-dark text-decoration-none d-block py-1 category-item" data-id="${id}">${name}</a></li>
+        `);
+      });
+
+      addCategoryClickEvent();
+    } catch (error) {
+      console.error("Lỗi tải danh mục:", error);
+      cateContainer.innerHTML = `<li class="text-danger small">Không thể tải danh mục</li>`;
+    }
+  }
+
+  function addCategoryClickEvent() {
+    const categoryLinks = document.querySelectorAll(".category-item");
+    categoryLinks.forEach(link => {
+      link.addEventListener("click", (e) => {
+        e.preventDefault();
+        categoryLinks.forEach(item => item.classList.remove("fw-bold", "active"));
+        link.classList.add("fw-bold", "active");
+
+        currentCategoryId = link.getAttribute("data-id");
+        currentPage = 1;
+        fetchProductsByPage(currentPage, currentCategoryId, currentSort);
+      });
+    });
+  }
+
+  // ==================== XỬ LÝ SẢN PHẨM & PHÂN TRANG ====================
+  async function fetchProductsByPage(page, cateId, sortType) {
+    const container = document.getElementById("product-container");
+    if (!container) return;
+    container.innerHTML = `<div class="col-12 text-center my-5"><p class="text-muted">Đang tải...</p></div>`;
+
+    const activeSort = sortType || currentSort;
+
+    try {
+      const apiResponse = await productService.getProducts({
+        page,
+        size: pageSize,
+        cateId,
+        sort: activeSort
+      });
+
+      if (cateId && cateId !== "all") {
+        const productsList = apiResponse.result || (Array.isArray(apiResponse) ? apiResponse : []);
+        displayProducts(productsList);
+        renderPagination(1, 1);
+      } else {
+        const pageData = apiResponse.result || apiResponse || {};
+        displayProducts(pageData.data || (Array.isArray(pageData) ? pageData : []));
+        renderPagination(pageData.currentPage || 1, pageData.totalPages || 1);
+      }
+    } catch (error) {
+      console.error("Lỗi fetch dữ liệu:", error);
+      container.innerHTML =
+        `<div class="col-12 text-center my-5 text-danger"><p class="fw-semibold">Không thể kết nối đến máy chủ API hoặc danh mục trống.</p></div>`;
+    }
+  }
+  // ✅ ĐỒNG BỘ LẠI HÀM CHUYỂN TRANG: Đảm bảo khi sang trang 2, 3 vẫn giữ nguyên kiểu sắp xếp giá thấp đến cao
+  function changePage(newPage) {
+    currentPage = newPage;
+    fetchProductsByPage(currentPage, currentCategoryId, currentSort);
+    window.scrollTo({
+      top: 300,
+      behavior: 'smooth'
+    });
+  }
+
+  function displayProducts(products) {
+    const container = document.getElementById("product-container");
+    container.innerHTML = "";
+
+    if (!products || products.length === 0) {
+      container.innerHTML =
+        `<div class="col-12 text-center my-5"><p class="text-muted">Không có sản phẩm nào.</p></div>`;
+      return;
+    }
+
+    products.forEach(product => {
+      const productName = product.namePro || "Sản phẩm không tên";
+      const productQuantity = product.quantity || 0;
+      const imgUrl = product.image ? `../assets/furnish-assets/images/${product.image}` :
+        `./assets/images/product-img-1.jpg`;
+
+      const price = product.price || 0;
+      // ✅ THÊM DÒNG NÀY: Format giá tiền có dấu chấm
+      const formattedPrice = price.toLocaleString('vi-VN');
+
+      const safeProductName = productName.replace(/'/g, "\\'");
+
+      const cardHtml = `
+        <div class="col-sm-6 col-md-4">
+            <div class="card product-card h-100 shadow-sm border-0">
+                <a href="product-detail.html?id=${product.id}">
+                    <img src="${imgUrl}" class="card-img-top" alt="${productName}" style="object-fit: cover; height: 260px;">
+                </a>
+                <div class="card-body d-flex flex-column justify-content-between">
+                    <div>    
+                     <div class="mb-3">
+                            <h3 class="h6 mb-1"> 
+                                <a href="product-detail.html?id=${product.id}" class="text-dark text-decoration-none fw-semibold">${productName}</a>
+                            </h3>
+                            <div class="mt-2">
+                                <span class="fw-bold text-primary">${formattedPrice} VNĐ</span>
+                            </div>
+                        </div>
+                    </div>
+                    <button onclick="addToCart(${product.id}, '${safeProductName}')" class="btn btn-outline-dark btn-sm w-100 mt-2">
+                        Add to Cart
+                    </button>
+                </div>
+            </div>
+        </div>`;
+      container.insertAdjacentHTML("beforeend", cardHtml);
+    });
+  }
+
+  function renderPagination(current, total) {
+    const paginationContainer = document.querySelector("nav.mt-5 ul.pagination");
+    paginationContainer.innerHTML = "";
+
+    if (total <= 1) return;
+
+    let prevClass = current === 1 ? "disabled" : "";
+    paginationContainer.innerHTML += `
+      <li class="page-item ${prevClass}">
+          <a class="page-link" href="#" onclick="changePage(${current - 1}); return false;">«</a>
+      </li>`;
+
+    const delta = 1;
+    const range = [];
+
+    for (let i = 1; i <= total; i++) {
+      if (i === 1 || i === total || (i >= current - delta && i <= current + delta)) {
+        range.push(i);
+      }
+    }
+
+    let l;
+    for (let i of range) {
+      if (l) {
+        if (i - l === 2) {
+          paginationContainer.innerHTML += `
+            <li class="page-item">
+                <a class="page-link" href="#" onclick="changePage(${l + 1}); return false;">${l + 1}</a>
+            </li>`;
+        } else if (i - l > 2) {
+          paginationContainer.innerHTML += `
+            <li class="page-item disabled">
+                <span class="page-link">...</span>
+            </li>`;
+        }
+      }
+      let activeClass = current === i ? "active" : "";
+      paginationContainer.innerHTML += `
+        <li class="page-item ${activeClass}">
+            <a class="page-link" href="#" onclick="changePage(${i}); return false;">${i}</a>
+        </li>`;
+      l = i;
+    }
+
+    let nextClass = current === total ? "disabled" : "";
+    paginationContainer.innerHTML += `
+      <li class="page-item ${nextClass}">
+          <a class="page-link" href="#" onclick="changePage(${current + 1}); return false;">»</a>
+      </li>`;
+  }
+
+
+
+  // ==================== XỬ LÝ GIỎ HÀNG ====================
+  async function addToCart(productId, productName) {
+    if (!authService.isUserLoggedIn()) {
+      window.location.href = "login.html";
+      return;
+    }
+
+    try {
+      await cartService.addToCart(productId, 1);
+      await uiHelper.updateCartBadge();
+    } catch (error) {
+      console.error("Lỗi thêm vào giỏ hàng:", error);
+      if (error.status === 401 || error.status === 403) {
+        authService.logoutUser();
+        window.location.href = "login.html";
+        return;
+      }
+      alert("Có lỗi xảy ra, không thể thêm vào giỏ hàng!");
+    }
+  }
+
+  // ==================== 🚀 XỬ LÝ TÌM KIẾM THEO TÊN SẢN PHẨM ====================
+  async function fetchProductsByName(namePro) {
+    const container = document.getElementById("product-container");
+    if (!container) return;
+    container.innerHTML =
+      `<div class="col-12 text-center my-5"><p class="text-muted">Đang tìm kiếm sản phẩm chứa từ khóa "${namePro}"...</p></div>`;
+
+    try {
+      const apiResponse = await productService.searchProductsByName(namePro);
+      const searchResultList = apiResponse.result || (Array.isArray(apiResponse) ? apiResponse : []);
+
+      displayProducts(searchResultList);
+
+      const paginationContainer = document.querySelector("nav.mt-5 ul.pagination");
+      if (paginationContainer) paginationContainer.innerHTML = "";
+
+    } catch (error) {
+      console.error("Lỗi tìm kiếm sản phẩm:", error);
+      container.innerHTML =
+        `<div class="col-12 text-center my-5 text-danger"><p class="fw-semibold">Không tìm thấy sản phẩm nào khớp với từ khóa của bạn.</p></div>`;
+    }
+  }
+
+  // Expose handlers to window for inline onclick handlers
+  window.addToCart = addToCart;
+  window.changePage = changePage;
+  window.handleSearch = handleSearch;
+</script>

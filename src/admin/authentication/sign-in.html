@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign In | Dasher - Responsive Bootstrap 5 Admin Dashboard</title>
+
+  <link rel="stylesheet" href="../../assets/dasher-assets/css/theme.css">
+</head>
+
+<body>
+  <main class="d-flex flex-column justify-content-center vh-100">
+    <section>
+      <div class="container">
+        <div class="row mb-8">
+          <div class="col-xl-4 offset-xl-4 col-md-12 col-12">
+            <div class="text-center">
+              <h1 class="mb-1">Welcome Back</h1>
+            </div>
+          </div>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-xl-5 col-lg-6 col-md-8 col-12">
+            <div class="card card-lg mb-6">
+              <div class="card-body p-6">
+                <form id="signInForm" class="needs-validation mb-6" novalidate>
+                  <div id="errorAlert" class="alert alert-danger d-none mb-3" role="alert"></div>
+                  <div class="mb-3">
+                    <label for="signinEmailInput" class="form-label">
+                      Email
+                      <span class="text-danger">*</span>
+                    </label>
+                    <input type="email" class="form-control" id="signinEmailInput" required />
+                    <div class="invalid-feedback">Please enter email.</div>
+                  </div>
+                  <div class="mb-3">
+                    <label for="formSignUpPassword" class="form-label">Password</label>
+                    <div class="password-field position-relative">
+                      <input type="password" class="form-control fakePassword" id="formSignUpPassword" required />
+                      <span><i class="ti ti-eye-off passwordToggler"></i></span>
+                      <div class="invalid-feedback">Please enter password.</div>
+                    </div>
+                  </div>
+
+                  <div class="mb-4 d-flex align-items-center justify-content-between">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="rememberMeCheckbox" />
+                      <label class="form-check-label" for="rememberMeCheckbox">Remember me</label>
+                    </div>
+                  </div>
+
+                  <div class="d-grid">
+                    <button class="btn btn-primary" type="submit">Sign In</button>
+                  </div>
+                </form>
+
+            
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="position-absolute end-0 bottom-0 m-4">
+      <div class="dropdown">
+        <button class="btn btn-light btn-icon rounded-circle d-flex align-items-center" type="button"
+          aria-expanded="false" data-bs-toggle="dropdown" aria-label="Toggle theme (auto)">
+          <i class="bi theme-icon-active lh-1"><i class="bi theme-icon bi-sun-fill"></i></i>
+          <span class="visually-hidden bs-theme-text">Toggle theme</span>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-end shadow">
+          <li>
+            <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="light"
+              aria-pressed="true">
+              <i class="ti theme-icon ti ti-sun"></i>
+              <span class="ms-2">Light</span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark"
+              aria-pressed="false">
+              <i class="ti theme-icon ti-moon-stars"></i>
+              <span class="ms-2">Dark</span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="auto"
+              aria-pressed="false">
+              <i class="ti theme-icon ti-circle-half-2"></i>
+              <span class="ms-2">Auto</span>
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </main>
+
+  <script src="../../assets/dasher-assets/js/main.js"></script>
+  <script src="../../assets/dasher-assets/js/vendors/password.js"></script>
+
+  <script type="module">
+    import { authService } from '../../services/index.js';
+
+    document.getElementById('signInForm').addEventListener('submit', async function (event) {
+      event.preventDefault();
+      event.stopPropagation();
+
+      const form = this;
+
+      if (!form.checkValidity()) {
+        form.classList.add('was-validated');
+        return;
+      }
+      form.classList.add('was-validated');
+
+      const emailValue = document.getElementById('signinEmailInput').value;
+      const passwordValue = document.getElementById('formSignUpPassword').value;
+
+      try {
+        const errorAlert = document.getElementById('errorAlert');
+        if (errorAlert) {
+          errorAlert.classList.add('d-none');
+        }
+
+        const data = await authService.adminLogin({
+          gmail: emailValue,
+          password: passwordValue
+        });
+
+        if (data?.result?.authenticated === true) {
+          window.location.href = '../../admin/index.html';
+        } else {
+          let errorMsg = 'Sai tài khoản hoặc mật khẩu!';
+          const backendMessage = data?.message || (data?.error ? data.error : '');
+          
+          if (backendMessage) {
+            const msgLower = backendMessage.toLowerCase();
+            if (msgLower.includes('ko co quyen') || msgLower.includes('không có quyền') || msgLower.includes('quyen') || msgLower.includes('quyền')) {
+              errorMsg = 'Tài khoản không có quyền đăng nhập vào trang quản trị!';
+            } else if (msgLower.includes('khong tim thay') || msgLower.includes('không tìm thấy')) {
+              errorMsg = 'Không tìm thấy tài khoản!';
+            } else if (msgLower.includes('sai mat khau') || msgLower.includes('sai mật khẩu')) {
+              errorMsg = 'Sai mật khẩu!';
+            } else {
+              errorMsg = backendMessage;
+            }
+          }
+          
+          if (errorAlert) {
+            errorAlert.textContent = errorMsg;
+            errorAlert.classList.remove('d-none');
+          } else {
+            alert('Đăng nhập thất bại: ' + errorMsg);
+          }
+        }
+
+      } catch (error) {
+        console.error('Lỗi kết nối API:', error);
+        const errorAlert = document.getElementById('errorAlert');
+        const errorMsg = error.message || 'Không thể kết nối tới Server. Vui lòng kiểm tra lại!';
+        if (errorAlert) {
+          errorAlert.textContent = errorMsg;
+          errorAlert.classList.remove('d-none');
+        } else {
+          alert('Lỗi: ' + errorMsg);
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>

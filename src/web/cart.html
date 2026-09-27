@@ -1,0 +1,488 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Products eCommerce Bootstrap HTML Template - Furnish</title>
+    <link rel="stylesheet" href="../assets/furnish-assets/scss/style.scss">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-white shadow-sm px-4 py-3 navbar-custom">
+        <div class="container-fluid px-0">
+            <a class="navbar-brand" href="index.html">
+                <span class="d-flex flex-column text-uppercase text-xs fw-bold lh-sm">
+                    <span class="" style="letter-spacing: .12rem;">Furnish</span>
+                    <span>Template</span>
+                </span></a>
+
+            <div class="mx-auto d-lg-block d-none">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="products.html">Products</a></li>
+                </ul>
+            </div>
+
+            <div class="d-flex align-items-center gap-4">
+                <span id="nav-greeting" class="fw-bold text-success d-none" style="font-size: 0.95rem;"></span>
+
+                <a href="cart.html" class="text-dark position-relative me-2 text-decoration-none">
+                    <i class="bi bi-cart fs-5"></i>
+                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                        id="cart-badge" style="font-size: 0.65rem;">0</span>
+                </a>
+
+                <div class="dropdown">
+                    <a class="text-dark-hover" href="#" role="button" id="navbarDropdownMenu" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                            class="bi bi-list" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5" />
+                        </svg>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end shadow border-0 mt-2"
+                        aria-labelledby="navbarDropdownMenu">
+                        <li><a class="dropdown-item py-2" href="profile.html">My Profile</a></li>
+
+                        <li><a class="dropdown-item py-2" href="my-orders.html">My Orders</a></li>
+
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+
+                        <li><a class="dropdown-item py-2" id="auth-link" href="#">Login</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="py-5">
+        <div class="container">
+            <h1 class="display-5 fw-bold mb-5 text-center">Shopping Cart</h1>
+
+            <div class="row gx-lg-5" id="cart-content">
+                <div class="col-lg-8 mb-5 mb-lg-0">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <span class="text-muted small" id="cart-item-count"></span>
+                        <button class="btn btn-outline-danger btn-sm" onclick="clearCart()" id="btn-clear-cart">
+                            <i class="bi bi-trash3 me-1"></i> Xóa tất cả giỏ hàng
+                        </button>
+                    </div>
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-body p-0">
+                            <div class="table-responsive">
+                                <table class="table table-borderless align-middle mb-0">
+                                    <thead class="bg-light text-uppercase text-muted text-xs fw-semibold">
+                                        <tr>
+                                            <th scope="col" class="py-3 px-4">Product</th>
+                                            <th scope="col" class="py-3">Price</th>
+                                            <th scope="col" class="py-3 text-center">Quantity</th>
+                                            <th scope="col" class="py-3 text-end px-4">Total</th>
+                                            <th scope="col" class="py-3"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="cart-item-container">
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="card border-0 shadow-sm bg-white">
+                        <div class="card-body p-4">
+                            <h3 class="h5 fw-bold mb-4">Order Summary</h3>
+                            <ul class="list-unstyled mb-4">
+                                <li class="d-flex justify-content-between py-2 border-bottom">
+                                    <span class="text-muted">Subtotal</span>
+                                    <span class="fw-semibold" id="cart-subtotal">$0.00</span>
+                                </li>
+                                <li class="d-flex justify-content-between py-2 border-bottom">
+                                    <span class="text-muted">Shipping</span>
+                                    <span class="fw-semibold text-success">Free</span>
+                                </li>
+                                <li class="d-flex justify-content-between py-3">
+                                    <span class="fw-bold fs-5">Total</span>
+                                    <span class="fw-bold fs-5 text-primary" id="cart-total">$0.00</span>
+                                </li>
+                            </ul>
+                            <a href="checkout.html" class="btn btn-dark w-100 py-3 fw-semibold">Proceed to Checkout</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row d-none" id="empty-cart-msg">
+                <div class="col-12 text-center py-5">
+                    <i class="bi bi-cart-x text-muted" style="font-size: 5rem;"></i>
+                    <h2 class="mt-4 mb-3 h4">Your cart is currently empty.</h2>
+                    <p class="text-muted mb-4">Before proceed to checkout you must add some products to your shopping
+                        cart.</p>
+                    <a href="products.html" class="btn btn-primary px-4 py-2">Return to Shop</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-dark  pt-8 footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-12">
+                    <a class="navbar-brand" href="#">
+                        <span class="d-flex flex-column text-uppercase text-xs fw-bold lh-sm">
+                            <span class="" style="letter-spacing: .12rem;">Furnish</span>
+                            <span>Template</span>
+                        </span></a>
+                </div>
+                <div class="col-lg-8 col-md-6 mb-4 d-flex justify-content-start justify-content-md-end gy-4">
+                    <ul class="list-unstyled lh-lg d-flex flex-column flex-md-row gap-4">
+                        <li><a href="#" class=" ft-links text-decoration-none">Home</a></li>
+                        <li><a href="#" class=" ft-links text-decoration-none">Services</a></li>
+                        <li><a href="#" class=" ft-links text-decoration-none">Products</a></li>
+                        <li><a href="#" class=" ft-links text-decoration-none">About Us</a></li>
+                        <li><a href="#" class=" ft-links text-decoration-none">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="row justify-content-center align-items-center pt-lg-8 pb-4">
+                    <div class="col-lg-6 col-md-6 mb-4">
+                        <h2 class="display-3 text-white">We Design all over the world</h2>
+
+                    </div>
+
+
+                    <div class="col-lg-6 col-md-6 mb-4">
+                        <div class="d-flex gap-3 justify-content-start justify-content-lg-end">
+                            <a href="#" class="btn btn-outline-light btn-icon"><i class="bi bi-facebook"></i></a>
+                            <a href="#" class="btn btn-outline-light btn-icon"><i class="bi bi-twitter"></i></a>
+                            <a href="#" class="btn btn-outline-light btn-icon"><i class="bi bi-instagram"></i></a>
+                            <a href="#" class="btn btn-outline-light btn-icon"><i class="bi bi-linkedin"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row justify-content-center align-items-center py-lg-8">
+                    <div class="col-lg-6 col-md-6 mb-4">
+                        <div class="d-flex flex-column">
+                            <span>Email Id</span>
+                            <span class="h3 fw-light">Info@example.com</span>
+                        </div>
+                    </div>
+
+
+                    <div class="col-lg-6 col-md-6 mb-4">
+                        <div class="d-flex gap-3 justify-content-lg-end">
+                            <a href="#" class="btn btn-outline-light">Contact us</a>
+                        </div>
+                    </div>
+                </div>
+                <hr class="bg-secondary">
+                <div class="row pb-3">
+                    <div class="col-md-6 text-center text-md-start">
+                        <p class=" mb-0">&copy; 2025 Furnish. Developed by <a href="https://codescandy.com"
+                                class="text-white" target="_blank">CodesCandy</a> • Distributed by <a
+                                href="https://themewagon.com" class="text-white" target="_blank">ThemeWagon</a>. All
+                            rights reserved.</p>
+                    </div>
+                    <div class="col-md-6 text-center text-md-end">
+                        <a href="#" class=" ft-links text-decoration-none me-3">Privacy Policy</a>
+                        <a href="#" class=" ft-links text-decoration-none">Terms of Service</a>
+                    </div>
+                </div>
+            </div>
+    </footer>
+
+
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+        <div class="offcanvas-header px-4">
+            <a class="navbar-brand" href="#">
+                <span class="d-flex flex-column text-uppercase text-xs fw-bold lh-sm">
+                    <span class="" style="letter-spacing: .12rem;">Furnish</span>
+                    <span>Template</span>
+                </span></a>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+
+            <div class="navbar-custom">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="products.html">Products</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="../assets/furnish-assets/js/main.js"></script>
+</body>
+
+</html>
+
+<script type="module">
+    import { cartService, authService, uiHelper } from '../services/index.js';
+
+    // Kích hoạt ngay khi trang HTML được tải xong
+    document.addEventListener("DOMContentLoaded", () => {
+        uiHelper.initCustomerNavbar();
+        loadCartDetails();
+    });
+
+    async function loadCartDetails() {
+        const itemContainer = document.getElementById("cart-item-container");
+        const cartContentBlock = document.getElementById("cart-content");
+        const emptyCartBlock = document.getElementById("empty-cart-msg");
+
+        if (!authService.isUserLoggedIn()) {
+            alert("Vui lòng đăng nhập để kiểm tra giỏ hàng!");
+            window.location.href = "login.html";
+            return;
+        }
+
+        try {
+            const data = await cartService.getCart();
+
+            // Trích xuất đối tượng cart và mảng cartItems bên trong khối 'result' của ApiResponse
+            const cartObj = data.result || {};
+            const cartItems = cartObj.cartItems || [];
+
+            // Nhánh xử lý: Nếu không có sản phẩm nào trong giỏ hàng
+            if (cartItems.length === 0) {
+                cartContentBlock.classList.add("d-none"); // Ẩn khối bảng giỏ hàng
+                emptyCartBlock.classList.remove("d-none"); // Hiện thông báo giỏ hàng trống
+                updateNavbarBadge(0);
+                return;
+            }
+
+            // Nếu có sản phẩm, ẩn thông báo trống và hiện bảng dữ liệu
+            cartContentBlock.classList.remove("d-none");
+            emptyCartBlock.classList.add("d-none");
+
+            itemContainer.innerHTML = ""; // Xóa các dòng text tải dữ liệu tạm thời
+
+            let subtotalPrice = 0;
+            let totalItemCount = 0;
+
+            // Duyệt qua từng chi tiết món hàng lấy từ Database
+            cartItems.forEach(item => {
+                const product = item.product || {};
+                const idCI = item.idCI; // Khóa chính dòng chi tiết dùng để xóa sản phẩm
+                const quantity = item.quantity || 0;
+
+                // Trích xuất dữ liệu thực tế từ Entity Product
+                const productName = product.namePro || "Sản phẩm không tên";
+                const productPrice = product.price || 0;
+                const imgUrl = product.image ? `../assets/furnish-assets/images/${product.image}` :
+                    `./assets/images/product-img-1.jpg`;
+
+                // Tính toán
+                const itemTotal = productPrice * quantity;
+                subtotalPrice += itemTotal;
+                totalItemCount += quantity;
+
+                // ✅ ĐỊNH DẠNG GIÁ TIỀN (Thêm dấu chấm)
+                const formattedPrice = productPrice.toLocaleString('vi-VN');
+                const formattedItemTotal = itemTotal.toLocaleString('vi-VN');
+
+                // Render chuỗi cấu trúc hàng HTML
+                const rowHtml = `
+                    <tr>
+                        <td class="py-4 px-4">
+                            <div class="d-flex align-items-center gap-3">
+                                <img src="${imgUrl}" alt="${productName}" style="width: 70px; height: 70px; object-fit: cover;" class="rounded shadow-sm">
+                                <div>
+                                    <h4 class="h6 mb-1 fw-bold text-dark">${productName}</h4>
+                                    <small class="text-muted">Mã dòng: ${idCI}</small>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="py-4">$${formattedPrice}</td>
+                      <td class="py-4 text-center">
+                            <div class="input-group input-group-sm mx-auto" style="max-width: 100px;">
+                                <input type="number" 
+                                       class="form-control text-center fw-bold" 
+                                       value="${quantity}" 
+                                       min="1" 
+                                       max="${product.quantity || 999}"
+                                       onchange="changeQuantity(${idCI}, this.value, ${product.quantity || 0}, ${quantity})">
+                            </div>
+                        </td>
+                        <td class="py-4 text-end px-4 fw-bold text-dark">$${formattedItemTotal}</td>
+                        <td class="py-4 text-center">
+                            <button class="btn btn-link text-danger p-0 border-0" onclick="deleteCartItem(${idCI})">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
+                                  <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5M11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47M8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5"/>
+                                </svg>
+                            </button>
+                        </td>
+                    </tr>
+                `;
+                itemContainer.insertAdjacentHTML("beforeend", rowHtml);
+            });
+
+            // ✅ Cập nhật các con số tính toán lên panel Tóm tắt đơn hàng (Có định dạng dấu chấm)
+            const formattedSubtotal = subtotalPrice.toLocaleString('vi-VN');
+            document.getElementById("cart-subtotal").innerText = `$${formattedSubtotal}`;
+            document.getElementById("cart-total").innerText = `$${formattedSubtotal}`;
+
+            // Cập nhật số lượng hiển thị trên text đếm
+            const countEl = document.getElementById("cart-item-count");
+            if (countEl) countEl.innerText = `${cartItems.length} sản phẩm trong giỏ hàng`;
+
+            // Đồng bộ con số hiển thị lên biểu tượng Badge giỏ hàng ở Navbar Header
+            updateNavbarBadge(totalItemCount);
+
+        } catch (error) {
+            console.error("Lỗi kết xuất giỏ hàng:", error);
+            itemContainer.innerHTML =
+                `<tr><td colspan="5" class="text-center py-5 text-danger fw-semibold">Hệ thống không thể đọc dữ liệu giỏ hàng từ máy chủ!</td></tr>`;
+        }
+    }
+
+    function renderAuthMenu() {
+        const authLink = document.getElementById("auth-link");
+        const token = localStorage.getItem("token");
+
+        if (!authLink) return;
+
+        if (token) {
+            // 1. Nếu ĐÃ ĐĂNG NHẬP: Đổi hiển thị thành Logout
+            authLink.innerText = "Logout";
+            authLink.classList.add("text-danger"); // Thêm màu đỏ cho nổi bật (tùy chọn)
+
+            authLink.onclick = () => {
+                localStorage.removeItem("token"); // Xóa token khỏi bộ nhớ trình duyệt
+                window.location.href = "index.html"; // Quay về trang chủ
+            };
+        } else {
+            // 2. Nếu CHƯA ĐĂNG NHẬP: Giữ nguyên chữ Login và chuyển hướng đến trang login
+            authLink.innerText = "Login";
+            authLink.classList.remove("text-danger");
+
+            authLink.onclick = () => {
+                window.location.href = "login.html";
+            };
+        }
+    }
+
+    // Hàm cập nhật nhanh con số badge đỏ trên Navbar
+    function updateNavbarBadge(count) {
+        const cartBadge = document.getElementById("cart-badge");
+        if (cartBadge) {
+            cartBadge.innerText = count;
+        }
+    }
+
+    // ==================== HÀM XỬ LÝ XÓA SẢN PHẨM PHÍA FRONT-END ====================
+    async function deleteCartItem(idCI) {
+        if (!authService.isUserLoggedIn()) {
+            alert("Vui lòng đăng nhập để thực hiện thao tác này!");
+            window.location.href = "login.html";
+            return;
+        }
+
+        try {
+            await cartService.deleteCartItem(idCI);
+            await uiHelper.updateCartBadge();
+            loadCartDetails();
+        } catch (error) {
+            console.error("Lỗi khi xóa sản phẩm:", error);
+            if (error.status === 401 || error.status === 403) {
+                alert("Phiên đăng nhập hết hạn. Vui lòng đăng nhập lại!");
+                authService.logoutUser();
+                window.location.href = "login.html";
+                return;
+            }
+            alert("Có lỗi xảy ra, không thể xóa sản phẩm khỏi giỏ hàng!");
+        }
+    }
+
+    // ==================== HÀM XÓA TẤT CẢ SẢN PHẨM KHỎI GIỎ HÀNG ====================
+    async function clearCart() {
+        if (!authService.isUserLoggedIn()) {
+            alert("Vui lòng đăng nhập!");
+            window.location.href = "login.html";
+            return;
+        }
+
+        const rows = document.querySelectorAll("#cart-item-container tr");
+        const idCIList = [];
+        rows.forEach(row => {
+            const btn = row.querySelector("button[onclick]");
+            if (btn) {
+                const match = btn.getAttribute("onclick").match(/deleteCartItem\((\d+)\)/);
+                if (match) idCIList.push(parseInt(match[1]));
+            }
+        });
+
+        if (idCIList.length === 0) {
+            alert("Giỏ hàng đã trống!");
+            return;
+        }
+
+        const btnClear = document.getElementById("btn-clear-cart");
+        if (btnClear) {
+            btnClear.disabled = true;
+            btnClear.innerHTML = `<span class="spinner-border spinner-border-sm me-1"></span> Đang xóa...`;
+        }
+
+        try {
+            await cartService.clearCart(idCIList);
+            await uiHelper.updateCartBadge();
+            loadCartDetails();
+        } catch (error) {
+            console.error("Lỗi khi xóa toàn bộ giỏ hàng:", error);
+            alert("Có lỗi xảy ra, vui lòng thử lại!");
+            loadCartDetails();
+        }
+    }
+
+    // ==================== HÀM CẬP NHẬT SỐ LƯỢNG KHI THAY ĐỔI Ô INPUT ====================
+    async function changeQuantity(idCI, newValue, stockQuantity, originalValue) {
+        const quantityToUpdate = parseInt(newValue);
+
+        if (!authService.isUserLoggedIn()) {
+            alert("Vui lòng đăng nhập!");
+            window.location.href = "login.html";
+            return;
+        }
+
+        if (quantityToUpdate < 1) {
+            alert("Số lượng sản phẩm không được nhỏ hơn 1!");
+            loadCartDetails();
+            return;
+        }
+
+        if (quantityToUpdate > stockQuantity) {
+            alert(`Kho chỉ còn ${stockQuantity} cái, không thể tăng lên ${quantityToUpdate} cái!`);
+            loadCartDetails();
+            return;
+        }
+
+        try {
+            await cartService.updateItemQuantity(idCI, quantityToUpdate);
+            await uiHelper.updateCartBadge();
+            loadCartDetails();
+        } catch (error) {
+            console.error("Lỗi:", error);
+            alert(error.message || "Có lỗi xảy ra khi cập nhật số lượng!");
+            loadCartDetails();
+        }
+    }
+
+    // Expose handlers to window for inline onclick / onchange
+    window.deleteCartItem = deleteCartItem;
+    window.clearCart = clearCart;
+    window.changeQuantity = changeQuantity;
+    window.loadCartDetails = loadCartDetails;
+</script>
+</script>

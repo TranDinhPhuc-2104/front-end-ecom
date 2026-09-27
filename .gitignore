@@ -1,0 +1,70 @@
+# ==============================
+# Node.js
+# ==============================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.pnpm-store/
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+.env.development
+.env.production
+
+# ==============================
+# Angular
+# ==============================
+/dist/
+/tmp/
+/out-tsc/
+/bazel-out/
+
+# Angular cache
+.angular/
+.angular/cache/
+
+# IDE - Angular specific
+.sass-cache/
+/connect.lock
+/coverage/
+/libpeerconnection.log
+testem.log
+/typings/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# ==============================
+# IDE / Editor
+# ==============================
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.idea/
+*.iml
+*.sublime-workspace
+*.sublime-project
+
+# ==============================
+# Build / Package
+# ==============================
+*.log
+*.tsbuildinfo
+package-lock.json.bak
+
+# ==============================
+# Misc
+# ==============================
+*.pem
+*.key
+*.crt
+.eslintcache
+.cache/
+.temp/

@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Product | Dasher</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        /* Cấu trúc Layout Admin */
+        #wrapper {
+            display: flex;
+            width: 100%;
+            align-items: stretch;
+            min-height: 100vh;
+        }
+
+        #sidebar {
+            min-width: 250px;
+            max-width: 250px;
+            background: #fff;
+            border-right: 1px solid #eee;
+        }
+
+        #content {
+            width: 100%;
+            padding-bottom: 20px;
+        }
+
+        @media (max-width: 991.98px) {
+            #sidebar {
+                position: fixed;
+                left: -250px;
+                top: 0;
+                bottom: 0;
+                z-index: 1045;
+                height: 100vh;
+                transition: left 0.3s ease;
+            }
+            #sidebar.show {
+                left: 0;
+                display: block !important;
+            }
+            .sidebar-overlay {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: rgba(0, 0, 0, 0.4);
+                z-index: 1040;
+            }
+            .sidebar-overlay.show {
+                display: block;
+            }
+        }
+
+        .card {
+            border: none;
+            border-radius: 0.75rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrapper">
+        <nav id="sidebar" class="p-3 d-none d-lg-block shadow-sm">
+            <h4 class="text-primary fw-bold mb-4">
+                <a href="index.html" style="text-decoration: none; color: inherit;">Dasher.</a>
+            </h4>
+            <ul class="nav flex-column gap-2">
+                <li class="nav-item"><a class="nav-link text-secondary" href="index.html"><i
+                            class="ti ti-dashboard me-2"></i>Dashboard</a></li>
+                <li class="nav-item"><a class="nav-link text-dark fw-semibold" href="product.html"><i
+                            class="ti ti-box me-2"></i>Products</a></li>
+                <li class="nav-item"><a class="nav-link text-secondary" href="orders.html"><i
+                            class="ti ti-shopping-cart me-2"></i>Orders</a></li>
+                <li class="nav-item"><a class="nav-link text-secondary" href="category.html"><i
+                            class="ti ti-category me-2"></i>Categories</a></li>
+                <li class="nav-item"><a class="nav-link text-secondary" href="revenue.html"><i
+                            class="ti ti-chart-bar me-2"></i>Revenue</a></li>
+                <li><hr class="my-2 text-secondary opacity-25"></li>
+                <li class="nav-item"><a class="nav-link text-success fw-semibold d-flex align-items-center gap-1" href="../web/index.html"><i class="ti ti-arrow-left me-1"></i>Back to Shop</a></li>
+            </ul>
+        </nav>
+
+        <div id="content" class="position-relative h-100">
+            <header class="d-flex justify-content-between align-items-center bg-white p-3 mb-4 shadow-sm">
+                <button class="btn btn-light d-lg-none"><i class="ti ti-menu-2"></i></button>
+                <div class="ms-auto">
+                    <div class="dropdown">
+                        <button class="btn btn-light dropdown-toggle d-flex align-items-center gap-2" type="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="ti ti-user-circle fs-4"></i>
+                            <span class="fw-semibold">Admin Profile</span>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end shadow">
+                            <li>
+                                <a class="dropdown-item d-flex align-items-center gap-2 text-danger" href="#"
+                                    onclick="localStorage.removeItem('accessToken'); localStorage.removeItem('token'); localStorage.removeItem('idAccount'); window.location.href='authentication/sign-in.html'; return false;">
+                                    <i class="ti ti-logout fs-5"></i> Logout
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </header>
+
+            <div class="container-fluid px-4 px-lg-6 py-4">
+
+                <div class="row mb-4 align-items-center g-3">
+                    <div class="col-auto">
+                        <h1 class="mb-0 fs-3 text-primary fw-bold">Update Product</h1>
+                        <p class="mb-0 text-secondary">Modify the details of your e-commerce product.</p>
+                    </div>
+                </div>
+
+                <div class="row justify-content-center">
+                    <div class="col-xl-8 col-lg-10 col-12">
+                        <div class="card card-lg shadow-sm mb-6">
+                            <div class="card-body p-4 p-md-5">
+
+                                <div id="responseMessage" class="alert d-none mb-4"></div>
+
+                                <form id="updateProductForm" class="needs-validation" novalidate>
+                                    <div class="row g-4">
+
+                                        <div class="col-md-12">
+                                            <label for="productName" class="form-label fw-semibold">Product Name <span
+                                                    class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" id="productName"
+                                                placeholder="Enter product name" required />
+                                            <div class="invalid-feedback">Please enter a product name.</div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <label for="productPrice" class="form-label fw-semibold">Price ($) <span
+                                                    class="text-danger">*</span></label>
+                                            <input type="number" step="0.01" class="form-control" id="productPrice"
+                                                placeholder="0.00" min="0" required />
+                                            <div class="invalid-feedback">Please enter a valid price.</div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <label for="productQuantity" class="form-label fw-semibold">Quantity <span
+                                                    class="text-danger">*</span></label>
+                                            <input type="number" class="form-control" id="productQuantity"
+                                                placeholder="0" min="0" required />
+                                            <div class="invalid-feedback">Please enter a valid quantity.</div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <label for="productCategory" class="form-label fw-semibold">Category <span
+                                                    class="text-danger">*</span></label>
+                                            <select class="form-select" id="productCategory" required>
+                                                <option value="">-- Choose Category --</option>
+                                            </select>
+                                            <div class="invalid-feedback">Please select a category.</div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <label for="productImage" class="form-label fw-semibold">Product Image
+                                                URL</label>
+                                            <input type="text" class="form-control" id="productImage"
+                                                placeholder="https://example.com/image.jpg" />
+                                            <div class="invalid-feedback">Please enter a valid URL.</div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <label for="productDescription"
+                                                class="form-label fw-semibold">Description</label>
+                                            <textarea class="form-control" id="productDescription" rows="4"
+                                                placeholder="Write something about the product..."></textarea>
+                                        </div>
+
+                                        <div class="col-md-12 d-flex gap-3 justify-content-end mt-4">
+                                            <a href="product.html" class="btn btn-light border">Cancel</a>
+                                            <button type="submit" id="btnSubmit"
+                                                class="btn btn-primary d-flex align-items-center gap-2">
+                                                <i class="ti ti-device-floppy fs-5"></i> Update Product
+                                            </button>
+                                        </div>
+
+                                    </div>
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script type="module">
+        import { categoryService, productService, authService } from '../services/index.js';
+
+        const messageDiv = document.getElementById('responseMessage');
+        const btnSubmit = document.getElementById('btnSubmit');
+
+        // Lấy mã ID sản phẩm từ URL (VD: editPro.html?id=5)
+        const urlParams = new URLSearchParams(window.location.search);
+        const productId = urlParams.get('id');
+
+        document.addEventListener("DOMContentLoaded", async function () {
+            // Mobile Sidebar Toggle
+            const sidebar = document.getElementById('sidebar');
+            const toggleBtn = document.querySelector('.d-lg-none');
+            
+            let overlay = document.querySelector('.sidebar-overlay');
+            if (!overlay) {
+                overlay = document.createElement('div');
+                overlay.className = 'sidebar-overlay';
+                document.body.appendChild(overlay);
+            }
+
+            if (toggleBtn && sidebar) {
+                toggleBtn.addEventListener('click', function () {
+                    sidebar.classList.toggle('show');
+                    overlay.classList.toggle('show');
+                });
+            }
+
+            overlay.addEventListener('click', function () {
+                sidebar.classList.remove('show');
+                overlay.classList.remove('show');
+            });
+
+            if (!authService.getAdminToken()) {
+                messageDiv.className = "alert alert-warning d-block mb-4";
+                messageDiv.innerText = "Warning: No access token found. You might need to login.";
+            }
+
+            if (!productId) {
+                messageDiv.className = "alert alert-danger d-block mb-4";
+                messageDiv.innerText = "❌ Error: No Product ID found in URL.";
+                btnSubmit.disabled = true;
+                return;
+            }
+
+            // Disable form tạm thời trong lúc load dữ liệu
+            btnSubmit.disabled = true;
+            btnSubmit.innerHTML =
+                `<span class="spinner-border spinner-border-sm" role="status"></span> Loading Data...`;
+
+            // 1. CHỜ TẢI DANH MỤC XONG TRƯỚC
+            await loadCategoriesToSelect();
+
+            // 2. RỒI MỚI TẢI THÔNG TIN SẢN PHẨM LÊN FORM
+            await loadProductDetails();
+
+            // Enable lại nút sau khi load xong
+            btnSubmit.disabled = false;
+            btnSubmit.innerHTML = `<i class="ti ti-device-floppy fs-5"></i> Update Product`;
+        });
+
+        // Hàm tải Category
+        async function loadCategoriesToSelect() {
+            try {
+                const data = await categoryService.getCategories();
+                const selectElement = document.getElementById('productCategory');
+                const cateList = data.result ? data.result : data;
+
+                if (Array.isArray(cateList)) {
+                    cateList.forEach(cate => {
+                        const option = document.createElement('option');
+                        option.value = cate.idCate || cate.id;
+                        option.innerText = cate.nameCate || cate.name;
+                        selectElement.appendChild(option);
+                    });
+                }
+            } catch (error) {
+                console.error("Lỗi khi tải danh mục:", error);
+            }
+        }
+
+        // Hàm tải Product Details
+        async function loadProductDetails() {
+            try {
+                const data = await productService.getProductById(productId);
+                const product = data.result ? data.result : data;
+
+                if (product) {
+                    // Fill dữ liệu, sử dụng fallback phòng hờ tên biến DTO thay đổi
+                    document.getElementById('productName').value = product.namePro || product.name || '';
+                    document.getElementById('productPrice').value = product.price || 0;
+                    document.getElementById('productQuantity').value = product.quantity || 0;
+                    document.getElementById('productDescription').value = product.description || '';
+                    document.getElementById('productImage').value = product.image || '';
+
+                    // Gán Category ID. Hệ thống sẽ tự select option có value tương ứng
+                    document.getElementById('productCategory').value = product.idCate || product.categoryId || '';
+                } else {
+                    messageDiv.className = "alert alert-danger d-block mb-4";
+                    messageDiv.innerText = "❌ Failed to load product details: Product not found.";
+                    btnSubmit.disabled = true;
+                }
+            } catch (error) {
+                console.error("Load product error:", error);
+                messageDiv.className = "alert alert-danger d-block mb-4";
+                messageDiv.innerText = "💥 Cannot connect to server to fetch product data: " + (error.message || '');
+                btnSubmit.disabled = true;
+            }
+        }
+
+        // Lắng nghe sự kiện Submit Form để cập nhật
+        document.getElementById('updateProductForm').addEventListener('submit', async function (event) {
+            event.preventDefault();
+            event.stopPropagation();
+
+            const form = this;
+
+            if (!form.checkValidity()) {
+                form.classList.add('was-validated');
+                return;
+            }
+            form.classList.add('was-validated');
+
+            messageDiv.className = "alert d-none mb-4";
+            btnSubmit.disabled = true;
+            btnSubmit.innerHTML =
+                `<span class="spinner-border spinner-border-sm" role="status"></span> Updating...`;
+
+            // Lấy dữ liệu form, sử dụng trim() cho chuỗi
+            const productData = {
+                namePro: document.getElementById('productName').value.trim(),
+                price: parseFloat(document.getElementById('productPrice').value),
+                quantity: parseInt(document.getElementById('productQuantity').value),
+                idCate: parseInt(document.getElementById('productCategory').value),
+                description: document.getElementById('productDescription').value.trim(),
+                image: document.getElementById('productImage').value.trim()
+            };
+
+            try {
+                await productService.updateProduct(productId, productData);
+
+                messageDiv.className = "alert alert-success d-block mb-4";
+                messageDiv.innerText = "🎉 Product updated successfully! Redirecting...";
+
+                setTimeout(() => {
+                    window.location.href = "product.html";
+                }, 1500);
+
+            } catch (error) {
+                console.error("Update error:", error);
+                messageDiv.className = "alert alert-danger d-block mb-4";
+                messageDiv.innerText = "❌ Update failed: " + (error.message || "Something went wrong.");
+            } finally {
+                // Chỉ mở lại nút nếu có lỗi
+                if (messageDiv.classList.contains("alert-danger")) {
+                    btnSubmit.disabled = false;
+                    btnSubmit.innerHTML = `<i class="ti ti-device-floppy fs-5"></i> Update Product`;
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

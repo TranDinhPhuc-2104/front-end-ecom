@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Products eCommerce Bootstrap HTML Template - Furnish</title>
+    <link rel="stylesheet" href="../assets/furnish-assets/scss/style.scss">
+</head>
+
+<body class="font-sans text-gray-800">
+
+    <nav class="navbar navbar-expand-lg bg-white shadow-sm px-4 py-3 navbar-custom">
+        <div class="container-fluid px-0">
+            <a class="navbar-brand" href="index.html">
+                <span class="d-flex flex-column text-uppercase text-xs fw-bold lh-sm">
+                    <span class="" style="letter-spacing: .12rem;">Furnish</span>
+                    <span>Template</span>
+                </span></a>
+
+            <div class="mx-auto  d-lg-block d-none">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="products.html">Products</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="d-flex align-items-center gap-4">
+                <span class="d-flex align-items-center gap-2 fw-bold">
+                    <span>
+                        <i class="bi bi-telephone"></i>
+                    </span>
+                    <span>+901234576</span>
+                </span>
+                <div class="dropdown">
+                    <a class="text-dark-hover" href="#" role="button" id="navbarDropdownMenu" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                            class="bi bi-list" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5" />
+                        </svg>
+                    </a>
+
+                    <!-- Danh sách các options sẽ hiện ra khi bạn bấm vào icon -->
+                    <ul class="dropdown-menu dropdown-menu-end shadow border-0 mt-2"
+                        aria-labelledby="navbarDropdownMenu">
+                        <li><a class="dropdown-item py-2" href="index.html">Home</a></li>
+                        <li><a class="dropdown-item py-2" href="about.html">About us</a></li>
+                        <li><a class="dropdown-item py-2" href="products.html">Products</a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </nav>
+
+    <main class="flex-grow-1 shopee-bg-theme d-flex align-items-center py-5">
+        <div class="container">
+            <div class="row align-items-center justify-content-center">
+
+                <div class="col-lg-6 text-center text-white d-none d-lg-block">
+                    <div class="px-5">
+                        <i class="bi bi-shop display-1 text-white mb-3"></i>
+                        <h1 class="display-3 fw-bold mb-2">Furnish</h1>
+                        <h2 class="display-5 banner-text-yellow mb-4">6.6 SIÊU SALE GIỮA NĂM</h2>
+                        <p class="lead text-white-50">Nội thất cao cấp - Giá siêu nhanh - Chất siêu rẻ. Giảm đến 50%
+                            toàn bộ sản phẩm ghế sofa và đèn phòng ngủ.</p>
+                        <div class="badge bg-warning text-dark p-2 px-3 fw-bold fs-6 mt-2">MÃ VOUCHER GIẢM ĐẾN 35% ĐÃ
+                            SẴN SÀNG</div>
+                    </div>
+                </div>
+
+                <div class="col-lg-5 col-md-8 col-12">
+                    <div class="card shadow border-0 rounded-3">
+                        <div class="card-body p-5">
+                            <h3 class="mb-4 fw-bold text-dark fs-4">Đăng nhập</h3>
+
+                            <form id="login-form">
+                                <div id="error-msg" class="alert alert-danger d-none text-sm py-2" role="alert">
+                                    Sai tài khoản hoặc mật khẩu!
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="gmail" class="form-label fw-semibold text-muted small">Email
+                                        address</label>
+                                    <input type="email" class="form-control p-3" id="gmail"
+                                        placeholder="Email/Số điện thoại/Tên đăng nhập" required>
+                                </div>
+
+                                <div class="mb-4">
+                                    <div class="d-flex justify-content-between align-items-center mb-1">
+                                        <label for="password"
+                                            class="form-label fw-semibold text-muted small mb-0">Password</label>
+                                    </div>
+                                    <input type="password" class="form-control p-3" id="password" placeholder="Mật khẩu"
+                                        required>
+                                </div>
+
+                                <div class="d-grid mb-3">
+                                    <button type="submit" class="btn text-white btn-lg py-3 fw-bold" id="btn-login"
+                                        style="background-color: #f53d2d;">
+                                        ĐĂNG NHẬP
+                                    </button>
+                                </div>
+
+                                <div class="d-flex justify-content-between mb-4 small">
+                                    <a href="#" class="text-primary text-decoration-none">Quên mật khẩu</a>
+                                    <a href="#" class="text-primary text-decoration-none">Đăng nhập với mã QR</a>
+                                </div>
+
+                                <hr class="text-muted">
+
+                                <div class="text-center text-muted small mt-4">
+                                    Bạn mới biết đến Furnish? <a href="register.html"
+                                        class="fw-bold text-decoration-none" style="color: #f53d2d;">Đăng ký</a>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-dark  pt-8 footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-12">
+                    <a class="navbar-brand" href="#">
+                        <span class="d-flex flex-column text-uppercase text-xs fw-bold lh-sm">
+                            <span class="" style="letter-spacing: .12rem;">Furnish</span>
+                            <span>Template</span>
+                        </span></a>
+                </div>
+                <div class="col-lg-8 col-md-6 mb-4 d-flex justify-content-start justify-content-md-end gy-4">
+                    <ul class="list-unstyled lh-lg d-flex flex-column flex-md-row gap-4">
+                        <li><a href="#" class=" ft-links text-decoration-none">Home</a></li>
+                        <li><a href="#" class=" ft-links text-decoration-none">Services</a></li>
+                        <li><a href="#" class=" ft-links text-decoration-none">Products</a></li>
+                        <li><a href="#" class=" ft-links text-decoration-none">About Us</a></li>
+                        <li><a href="#" class=" ft-links text-decoration-none">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="row justify-content-center align-items-center pt-lg-8 pb-4">
+                    <div class="col-lg-6 col-md-6 mb-4">
+                        <h2 class="display-3 text-white">We Design all over the world</h2>
+
+                    </div>
+
+
+                    <div class="col-lg-6 col-md-6 mb-4">
+                        <div class="d-flex gap-3 justify-content-start justify-content-lg-end">
+                            <a href="#" class="btn btn-outline-light btn-icon"><i class="bi bi-facebook"></i></a>
+                            <a href="#" class="btn btn-outline-light btn-icon"><i class="bi bi-twitter"></i></a>
+                            <a href="#" class="btn btn-outline-light btn-icon"><i class="bi bi-instagram"></i></a>
+                            <a href="#" class="btn btn-outline-light btn-icon"><i class="bi bi-linkedin"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row justify-content-center align-items-center py-lg-8">
+                    <div class="col-lg-6 col-md-6 mb-4">
+                        <div class="d-flex flex-column">
+                            <span>Email Id</span>
+                            <span class="h3 fw-light">Info@example.com</span>
+                        </div>
+                    </div>
+
+
+                    <div class="col-lg-6 col-md-6 mb-4">
+                        <div class="d-flex gap-3 justify-content-lg-end">
+                            <a href="#" class="btn btn-outline-light">Contact us</a>
+                        </div>
+                    </div>
+                </div>
+                <hr class="bg-secondary">
+                <div class="row pb-3">
+                    <div class="col-md-6 text-center text-md-start">
+                        <p class=" mb-0">&copy; 2025 Furnish. Developed by <a href="https://codescandy.com"
+                                class="text-white" target="_blank">CodesCandy</a> • Distributed by <a
+                                href="https://themewagon.com" class="text-white" target="_blank">ThemeWagon</a>. All
+                            rights reserved.</p>
+                    </div>
+                    <div class="col-md-6 text-center text-md-end">
+                        <a href="#" class=" ft-links text-decoration-none me-3">Privacy Policy</a>
+                        <a href="#" class=" ft-links text-decoration-none">Terms of Service</a>
+                    </div>
+                </div>
+            </div>
+    </footer>
+
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+        <div class="offcanvas-header px-4">
+            <a class="navbar-brand" href="#">
+                <span class="d-flex flex-column text-uppercase text-xs fw-bold lh-sm">
+                    <span class="" style="letter-spacing: .12rem;">Furnish</span>
+                    <span>Template</span>
+                </span></a>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+
+            <div class="navbar-custom">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="products.html">Products</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="../assets/furnish-assets/js/main.js"></script>
+</body>
+
+</html>
+
+<script type="module">
+    import { authService, uiHelper } from '../services/index.js';
+
+    document.addEventListener("DOMContentLoaded", () => {
+        if (authService.isUserLoggedIn()) {
+            window.location.href = "index.html";
+            return;
+        }
+
+        uiHelper.updateCartBadge();
+
+        const loginForm = document.getElementById("login-form");
+        const errorMsg = document.getElementById("error-msg");
+        const btnLogin = document.getElementById("btn-login");
+
+        loginForm.addEventListener("submit", async (event) => {
+            event.preventDefault();
+
+            const gmailInput = document.getElementById("gmail").value.trim();
+            const passwordInput = document.getElementById("password").value.trim();
+
+            errorMsg.classList.add("d-none");
+            btnLogin.innerText = "LOADING...";
+            btnLogin.disabled = true;
+
+            try {
+                const data = await authService.login({
+                    gmail: gmailInput,
+                    password: passwordInput
+                });
+
+                if (data && data.result && data.result.token) {
+                    window.location.href = "index.html";
+                } else {
+                    throw new Error("Dữ liệu trả về không đúng cấu trúc");
+                }
+
+            } catch (error) {
+                console.error("Lỗi đăng nhập:", error);
+                errorMsg.innerText = "Sai địa chỉ email hoặc mật khẩu!";
+                errorMsg.classList.remove("d-none");
+            } finally {
+                btnLogin.innerText = "ĐĂNG NHẬP";
+                btnLogin.disabled = false;
+            }
+        });
+    });
+</script>

@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Products eCommerce Bootstrap HTML Template - Furnish</title>
+    <link rel="stylesheet" href="../assets/furnish-assets/scss/style.scss">
+</head>
+
+<body class="font-sans text-gray-800">
+
+    <nav class="navbar navbar-expand-lg bg-white shadow-sm px-4 py-3 navbar-custom">
+        <div class="container-fluid px-0">
+            <a class="navbar-brand" href="index.html">
+                <span class="d-flex flex-column text-uppercase text-xs fw-bold lh-sm">
+                    <span class="" style="letter-spacing: .12rem;">Furnish</span>
+                    <span>Template</span>
+                </span></a>
+
+            <div class="mx-auto d-lg-block d-none">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="products.html">Products</a></li>
+                </ul>
+            </div>
+
+            <div class="d-flex align-items-center gap-4">
+                <span id="nav-greeting" class="fw-bold text-success d-none" style="font-size: 0.95rem;"></span>
+
+                <a href="cart.html" class="text-dark position-relative me-2 text-decoration-none">
+                    <i class="bi bi-cart fs-5"></i>
+                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                        id="cart-badge" style="font-size: 0.65rem;">0</span>
+                </a>
+
+                <div class="dropdown">
+                    <a class="text-dark-hover" href="#" role="button" id="navbarDropdownMenu" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                            class="bi bi-list" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5" />
+                        </svg>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end shadow border-0 mt-2"
+                        aria-labelledby="navbarDropdownMenu">
+                        <li><a class="dropdown-item py-2" href="profile.html">My Profile</a></li>
+
+                        <li><a class="dropdown-item py-2" href="my-orders.html">My Orders</a></li>
+
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+
+                        <li><a class="dropdown-item py-2" id="auth-link" href="#">Login</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+
+    <main class="py-5">
+        <div class="container">
+            <div id="loading-msg" class="text-center my-5">
+                <h4 class="text-muted">Đang tải thông tin sản phẩm...</h4>
+            </div>
+
+            <div class="row gx-lg-5 d-none" id="product-detail-container">
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <div
+                        class="bg-light rounded p-4 text-center h-100 d-flex align-items-center justify-content-center">
+                        <img id="detail-image" src="" class="img-fluid rounded shadow-sm w-100" alt="Product Image"
+                            style="object-fit: cover; max-height: 500px;">
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <!-- <p class="text-primary text-uppercase fw-bold mb-2" id="detail-category">Category ID: ...</p> -->
+                    <h1 class="display-5 fw-bold mb-3" id="detail-name">Tên sản phẩm</h1>
+
+                    <div class="mb-2">
+                        <span class="fs-3 fw-bold text-danger">$</span>
+                        <span class="fs-3 fw-bold text-danger" id="detail-price">0.00</span>
+                    </div>
+
+
+                    <hr class="my-4">
+
+                    <div class="d-flex align-items-center gap-3 mb-4">
+                        <input type="number" class="form-control text-center w-25 p-3" value="1" min="1"
+                            id="cart-quantity">
+                        <button class="btn btn-dark btn-lg w-75 p-3" id="btn-add-cart">
+                            <i class="bi bi-cart-plus me-2"></i> Add to Cart
+                        </button>
+                    </div>
+                    <p class="lead text-muted mb-4" id="detail-description">
+                        Đang tải mô tả sản phẩm...
+                    </p>
+                    <ul class="list-unstyled text-muted small lh-lg">
+                        <li><i class="bi bi-check-circle-fill text-success me-2"></i> Miễn phí vận chuyển toàn quốc</li>
+                        <li><i class="bi bi-check-circle-fill text-success me-2"></i> Bảo hành chính hãng 12 tháng</li>
+                        <li><i class="bi bi-check-circle-fill text-success me-2"></i> Đổi trả miễn phí trong 7 ngày</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+    <footer class="bg-dark  pt-8 footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-12">
+                    <a class="navbar-brand" href="#">
+                        <span class="d-flex flex-column text-uppercase text-xs fw-bold lh-sm">
+                            <span class="" style="letter-spacing: .12rem;">Furnish</span>
+                            <span>Template</span>
+                        </span></a>
+                </div>
+                <div class="col-lg-8 col-md-6 mb-4 d-flex justify-content-start justify-content-md-end gy-4">
+                    <ul class="list-unstyled lh-lg d-flex flex-column flex-md-row gap-4">
+                        <li><a href="#" class=" ft-links text-decoration-none">Home</a></li>
+                        <li><a href="#" class=" ft-links text-decoration-none">Services</a></li>
+                        <li><a href="#" class=" ft-links text-decoration-none">Products</a></li>
+                        <li><a href="#" class=" ft-links text-decoration-none">About Us</a></li>
+                        <li><a href="#" class=" ft-links text-decoration-none">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="row justify-content-center align-items-center pt-lg-8 pb-4">
+                    <div class="col-lg-6 col-md-6 mb-4">
+                        <h2 class="display-3 text-white">We Design all over the world</h2>
+
+                    </div>
+
+
+                    <div class="col-lg-6 col-md-6 mb-4">
+                        <div class="d-flex gap-3 justify-content-start justify-content-lg-end">
+                            <a href="#" class="btn btn-outline-light btn-icon"><i class="bi bi-facebook"></i></a>
+                            <a href="#" class="btn btn-outline-light btn-icon"><i class="bi bi-twitter"></i></a>
+                            <a href="#" class="btn btn-outline-light btn-icon"><i class="bi bi-instagram"></i></a>
+                            <a href="#" class="btn btn-outline-light btn-icon"><i class="bi bi-linkedin"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row justify-content-center align-items-center py-lg-8">
+                    <div class="col-lg-6 col-md-6 mb-4">
+                        <div class="d-flex flex-column">
+                            <span>Email Id</span>
+                            <span class="h3 fw-light">phucdzqq@gmail.com</span>
+                        </div>
+                    </div>
+
+
+                    <div class="col-lg-6 col-md-6 mb-4">
+                        <div class="d-flex gap-3 justify-content-lg-end">
+                            <a href="#" class="btn btn-outline-light">Contact us</a>
+                        </div>
+                    </div>
+                </div>
+                <hr class="bg-secondary">
+                <div class="row pb-3">
+                    <div class="col-md-6 text-center text-md-start">
+                        <p class=" mb-0">&copy; 2025 Furnish. Developed by <a href="https://codescandy.com"
+                                class="text-white" target="_blank">CodesCandy</a> • Distributed by <a
+                                href="https://themewagon.com" class="text-white" target="_blank">ThemeWagon</a>. All
+                            rights reserved.</p>
+                    </div>
+                    <div class="col-md-6 text-center text-md-end">
+                        <a href="#" class=" ft-links text-decoration-none me-3">Privacy Policy</a>
+                        <a href="#" class=" ft-links text-decoration-none">Terms of Service</a>
+                    </div>
+                </div>
+            </div>
+    </footer>
+    <div class="position-fixed end-0 bottom-0 m-4 z-1">
+        <script type="module" src="../assets/furnish-assets/js/main.js"></script>
+</body>
+
+</html>
+
+
+<script type="module">
+    import { productService, cartService, authService, uiHelper } from '../services/index.js';
+
+    let currentProduct = null;
+
+    document.addEventListener("DOMContentLoaded", () => {
+        uiHelper.initCustomerNavbar();
+
+        // Lấy ID sản phẩm từ URL và gọi API
+        const urlParams = new URLSearchParams(window.location.search);
+        const productId = urlParams.get("id");
+
+        if (productId) {
+            fetchProductDetail(productId);
+        } else {
+            document.getElementById("loading-msg").innerHTML =
+                `<h4 class="text-danger">Không tìm thấy mã sản phẩm! Vui lòng quay lại trang danh sách.</h4>`;
+        }
+
+        // Sự kiện thêm vào giỏ hàng
+        document.getElementById("btn-add-cart").addEventListener("click", () => {
+            if (currentProduct) {
+                const quantityInput = document.getElementById("cart-quantity");
+                const chosenQuantity = parseInt(quantityInput.value) || 1;
+                const stockQuantity = currentProduct.quantity || 0;
+
+                if (chosenQuantity < 1) {
+                    alert("Số lượng sản phẩm thêm vào phải lớn hơn hoặc bằng 1!");
+                    return;
+                }
+
+                if (chosenQuantity > stockQuantity) {
+                    alert(
+                        `Không thể thêm vào giỏ hàng! Số lượng bạn chọn (${chosenQuantity}) đã vượt quá số lượng hiện có trong kho (${stockQuantity} cái).`
+                    );
+                    quantityInput.value = stockQuantity;
+                    return;
+                }
+
+                addToCartFromDetail(currentProduct.id, currentProduct.namePro, chosenQuantity);
+            }
+        });
+    });
+
+    // ==================== XỬ LÝ LẤY DỮ LIỆU SẢN PHẨM ====================
+    async function fetchProductDetail(id) {
+        try {
+            const apiResponse = await productService.getProductById(id);
+            const product = apiResponse?.result ? apiResponse.result : apiResponse;
+
+            currentProduct = product;
+
+            // Đổ dữ liệu text
+            document.getElementById("detail-name").innerText = product.namePro || "Sản phẩm không tên";
+
+            const price = product.price || 0;
+            document.getElementById("detail-price").innerText = price.toLocaleString('vi-VN');
+
+            const descText = product.description ? product.description : "Đang cập nhật mô tả cho sản phẩm này.";
+            document.getElementById("detail-description").innerText = descText;
+
+            // Xử lý ảnh
+            const imgUrl = product.image ? `../assets/furnish-assets/images/${product.image}` :
+                `../assets/furnish-assets/images/product-img-1.jpg`;
+            document.getElementById("detail-image").src = imgUrl;
+
+            // Ẩn chữ Loading và hiện nội dung
+            document.getElementById("loading-msg").classList.add("d-none");
+            document.getElementById("product-detail-container").classList.remove("d-none");
+
+        } catch (error) {
+            console.error(error);
+            document.getElementById("loading-msg").innerHTML =
+                `<h4 class="text-danger">Lỗi kết nối máy chủ! Không thể tải sản phẩm.</h4>`;
+        }
+    }
+
+    // ==================== XỬ LÝ GIỎ HÀNG ====================
+    async function addToCartFromDetail(productId, productName, quantity) {
+        if (!authService.isUserLoggedIn()) {
+            alert("Vui lòng đăng nhập để thêm sản phẩm vào giỏ hàng!");
+            window.location.href = "login.html";
+            return;
+        }
+
+        try {
+            await cartService.addToCart(productId, quantity);
+            await uiHelper.updateCartBadge();
+            alert("Đã thêm sản phẩm vào giỏ hàng thành công!");
+        } catch (error) {
+            console.error("Lỗi thêm vào giỏ hàng:", error);
+            if (error.status === 401 || error.status === 403) {
+                alert("Phiên làm việc hết hạn. Vui lòng đăng nhập lại!");
+                authService.logoutUser();
+                window.location.href = "login.html";
+                return;
+            }
+            alert(error.message || "Có lỗi xảy ra, không thể đồng bộ giỏ hàng với Database!");
+        }
+    }
+</script>

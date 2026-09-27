@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Products eCommerce Bootstrap HTML Template - Furnish</title>
+    <link rel="stylesheet" href="../assets/furnish-assets/scss/style.scss">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-white shadow-sm px-4 py-3 navbar-custom">
+        <div class="container-fluid px-0">
+            <a class="navbar-brand" href="index.html">
+                <span class="d-flex flex-column text-uppercase text-xs fw-bold lh-sm">
+                    <span class="" style="letter-spacing: .12rem;">Furnish</span>
+                    <span>Template</span>
+                </span></a>
+
+            <div class="mx-auto d-lg-block d-none">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="products.html">Products</a></li>
+                </ul>
+            </div>
+
+            <div class="d-flex align-items-center gap-4">
+                <span id="nav-greeting" class="fw-bold text-success d-none" style="font-size: 0.95rem;"></span>
+
+                <a href="cart.html" class="text-dark position-relative me-2 text-decoration-none">
+                    <i class="bi bi-cart fs-5"></i>
+                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                        id="cart-badge" style="font-size: 0.65rem;">0</span>
+                </a>
+
+                <div class="dropdown">
+                    <a class="text-dark-hover" href="#" role="button" id="navbarDropdownMenu" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                            class="bi bi-list" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5" />
+                        </svg>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end shadow border-0 mt-2"
+                        aria-labelledby="navbarDropdownMenu">
+                        <li><a class="dropdown-item py-2" href="profile.html">My Profile</a></li>
+
+                        <li><a class="dropdown-item py-2" href="my-orders.html">My Orders</a></li>
+
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+
+                        <li><a class="dropdown-item py-2" id="auth-link" href="#">Login</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <main class="py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-9 col-md-11">
+                    <h4 class="fw-bold mb-4">My Profile</h4>
+
+                    <div id="message-box" class="alert d-none text-sm py-2" role="alert"></div>
+
+                    <!-- CARD 1: PROFILE HEADER -->
+                    <div class="card profile-card">
+                        <div class="card-body d-flex align-items-center p-4">
+                            <!-- Ảnh đại diện giả lập -->
+                            <img src="https://ui-avatars.com/api/?name=User&background=random&size=100"
+                                class="rounded-circle me-4 shadow-sm"
+                                style="width: 80px; height: 80px; object-fit: cover;" alt="Avatar">
+                            <div>
+                                <h5 class="fw-bold mb-1" id="header-fullname">Đang tải...</h5>
+                                <p class="text-muted mb-1 small">Thành viên Furnish</p>
+                                <p class="text-muted mb-0 small"><i class="bi bi-geo-alt-fill text-success me-1"></i>
+                                    <span id="header-address">Việt Nam</span></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FORM BỌC LẤY CARD 2 & 3 ĐỂ CẬP NHẬT -->
+                    <form id="profile-form">
+                        <!-- CARD 2: PERSONAL INFORMATION -->
+                        <div class="card profile-card">
+                            <div class="card-body p-4">
+                                <div class="d-flex justify-content-between align-items-center mb-4">
+                                    <h5 class="fw-bold mb-0 fs-5 text-success">Personal Information</h5>
+                                    <button type="button" class="btn btn-edit-orange" id="btn-toggle-personal">
+                                        Edit <i class="bi bi-pencil ms-1"></i>
+                                    </button>
+                                </div>
+
+                                <div class="row g-4">
+                                    <div class="col-md-6">
+                                        <div class="info-label">First Name</div>
+                                        <div class="info-value display-mode-personal">Đang tải...</div>
+                                        <input type="text" class="form-control d-none edit-mode-personal"
+                                            id="input-firstName" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="info-label">Last Name</div>
+                                        <div class="info-value display-mode-personal">Đang tải...</div>
+                                        <input type="text" class="form-control d-none edit-mode-personal"
+                                            id="input-lastName" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="info-label">Date of Birth</div>
+                                        <div class="info-value display-mode-personal">Đang tải...</div>
+                                        <input type="date" class="form-control d-none edit-mode-personal"
+                                            id="input-dob">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="info-label">Phone Number</div>
+                                        <div class="info-value display-mode-personal">Đang tải...</div>
+                                        <input type="tel" class="form-control d-none edit-mode-personal"
+                                            id="input-phone" placeholder="Ví dụ: 0912345678">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- CARD 3: ADDRESS -->
+                        <div class="card profile-card">
+                            <div class="card-body p-4">
+                                <div class="d-flex justify-content-between align-items-center mb-4">
+                                    <h5 class="fw-bold mb-0 fs-5 text-success">Address</h5>
+                                    <button type="button" class="btn btn-edit-outline" id="btn-toggle-address">
+                                        Edit <i class="bi bi-pencil ms-1"></i>
+                                    </button>
+                                </div>
+
+                                <div class="row g-4">
+                                    <div class="col-md-12">
+                                        <div class="info-label">Full Address</div>
+                                        <div class="info-value display-mode-address">Đang tải...</div>
+                                        <input type="text" class="form-control d-none edit-mode-address"
+                                            id="input-address" placeholder="Ví dụ: 123 Lê Lợi, Quận 1, TP.HCM">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- NÚT LƯU BỊ ẨN, CHỈ HIỆN KHI BẤM EDIT -->
+                        <div class="text-end d-none" id="save-action-group">
+                            <button type="button" class="btn btn-light border px-4 me-2"
+                                onclick="window.location.reload()">Hủy</button>
+                            <button type="submit" class="btn text-white px-5 fw-bold" style="background-color: #f53d2d;"
+                                id="btn-save">LƯU THAY ĐỔI</button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="bg-dark  pt-8 footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-12">
+                    <a class="navbar-brand" href="#">
+                        <span class="d-flex flex-column text-uppercase text-xs fw-bold lh-sm">
+                            <span class="" style="letter-spacing: .12rem;">Furnish</span>
+                            <span>Template</span>
+                        </span></a>
+                </div>
+                <div class="col-lg-8 col-md-6 mb-4 d-flex justify-content-start justify-content-md-end gy-4">
+                    <ul class="list-unstyled lh-lg d-flex flex-column flex-md-row gap-4">
+                        <li><a href="#" class=" ft-links text-decoration-none">Home</a></li>
+                        <li><a href="#" class=" ft-links text-decoration-none">Services</a></li>
+                        <li><a href="#" class=" ft-links text-decoration-none">Products</a></li>
+                        <li><a href="#" class=" ft-links text-decoration-none">About Us</a></li>
+                        <li><a href="#" class=" ft-links text-decoration-none">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="row justify-content-center align-items-center pt-lg-8 pb-4">
+                    <div class="col-lg-6 col-md-6 mb-4">
+                        <h2 class="display-3 text-white">We Design all over the world</h2>
+
+                    </div>
+
+
+                    <div class="col-lg-6 col-md-6 mb-4">
+                        <div class="d-flex gap-3 justify-content-start justify-content-lg-end">
+                            <a href="#" class="btn btn-outline-light btn-icon"><i class="bi bi-facebook"></i></a>
+                            <a href="#" class="btn btn-outline-light btn-icon"><i class="bi bi-twitter"></i></a>
+                            <a href="#" class="btn btn-outline-light btn-icon"><i class="bi bi-instagram"></i></a>
+                            <a href="#" class="btn btn-outline-light btn-icon"><i class="bi bi-linkedin"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row justify-content-center align-items-center py-lg-8">
+                    <div class="col-lg-6 col-md-6 mb-4">
+                        <div class="d-flex flex-column">
+                            <span>Email Id</span>
+                            <span class="h3 fw-light">Info@example.com</span>
+                        </div>
+                    </div>
+
+
+                    <div class="col-lg-6 col-md-6 mb-4">
+                        <div class="d-flex gap-3 justify-content-lg-end">
+                            <a href="#" class="btn btn-outline-light">Contact us</a>
+                        </div>
+                    </div>
+                </div>
+                <hr class="bg-secondary">
+                <div class="row pb-3">
+                    <div class="col-md-6 text-center text-md-start">
+                        <p class=" mb-0">&copy; 2025 Furnish. Developed by <a href="https://codescandy.com"
+                                class="text-white" target="_blank">CodesCandy</a> • Distributed by <a
+                                href="https://themewagon.com" class="text-white" target="_blank">ThemeWagon</a>. All
+                            rights reserved.</p>
+                    </div>
+                    <div class="col-md-6 text-center text-md-end">
+                        <a href="#" class=" ft-links text-decoration-none me-3">Privacy Policy</a>
+                        <a href="#" class=" ft-links text-decoration-none">Terms of Service</a>
+                    </div>
+                </div>
+            </div>
+    </footer>
+
+
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+        <div class="offcanvas-header px-4">
+            <a class="navbar-brand" href="#">
+                <span class="d-flex flex-column text-uppercase text-xs fw-bold lh-sm">
+                    <span class="" style="letter-spacing: .12rem;">Furnish</span>
+                    <span>Template</span>
+                </span></a>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+
+            <div class="navbar-custom">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="products.html">Products</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="../assets/furnish-assets/js/main.js"></script>
+</body>
+
+</html>
+
+<script type="module">
+    import { userService, authService, uiHelper } from '../services/index.js';
+
+    document.addEventListener("DOMContentLoaded", async () => {
+        if (!authService.isUserLoggedIn()) {
+            alert("Vui lòng đăng nhập!");
+            window.location.href = "login.html";
+            return;
+        }
+
+        uiHelper.initCustomerNavbar();
+
+        // --- 1. GỌI API LẤY DỮ LIỆU ĐỔ VÀO GIAO DIỆN ---
+        try {
+            const data = await userService.getProfile();
+            const user = data?.result;
+
+            if (user) {
+                // Xử lý chuỗi ngày sinh (Cắt bỏ phần giờ T00:00:00 nếu có)
+                const formattedDob = user.dob ? user.dob.split('T')[0] : "";
+                const fName = user.firstName || "";
+                const lName = user.lastName || "";
+                const addr = user.address || "";
+                const ph = user.phone || "";
+
+                // Đổ dữ liệu vào Header
+                document.getElementById("header-fullname").innerText = `${fName} ${lName}`.trim() ||
+                    "Người dùng ẩn danh";
+                document.getElementById("header-address").innerText = addr || "Chưa cập nhật địa chỉ";
+
+                // Đổ dữ liệu vào chế độ HIỂN THỊ (Text)
+                const displayPersonal = document.querySelectorAll(".display-mode-personal");
+                if (displayPersonal.length >= 4) {
+                    displayPersonal[0].innerText = fName || "N/A";
+                    displayPersonal[1].innerText = lName || "N/A";
+                    displayPersonal[2].innerText = formattedDob || "N/A";
+                    displayPersonal[3].innerText = ph || "N/A";
+                }
+                const displayAddr = document.querySelector(".display-mode-address");
+                if (displayAddr) displayAddr.innerText = addr || "N/A";
+
+                // Đổ dữ liệu sẵn vào các INPUT (để sẵn sàng edit)
+                document.getElementById("input-firstName").value = fName;
+                document.getElementById("input-lastName").value = lName;
+                document.getElementById("input-dob").value = formattedDob;
+                document.getElementById("input-phone").value = ph;
+                document.getElementById("input-address").value = addr;
+            }
+        } catch (error) {
+            console.error("Lỗi tải dữ liệu:", error);
+            if (error.status === 401 || error.status === 403) {
+                authService.logoutUser();
+                window.location.href = "login.html";
+            }
+        }
+
+        // --- 2. LOGIC ẨN/HIỆN NÚT EDIT ---
+        const toggleEditMode = (sectionClass) => {
+            document.querySelectorAll(`.display-mode-${sectionClass}`).forEach(el => el.classList.add("d-none"));
+            document.querySelectorAll(`.edit-mode-${sectionClass}`).forEach(el => el.classList.remove("d-none"));
+            document.getElementById("save-action-group").classList.remove("d-none");
+        };
+
+        document.getElementById("btn-toggle-personal").addEventListener("click", () => toggleEditMode("personal"));
+        document.getElementById("btn-toggle-address").addEventListener("click", () => toggleEditMode("address"));
+
+        // --- 3. XỬ LÝ LƯU DỮ LIỆU LÊN SERVER ---
+        const profileForm = document.getElementById("profile-form");
+        const btnSave = document.getElementById("btn-save");
+        const messageBox = document.getElementById("message-box");
+
+        profileForm.addEventListener("submit", async (e) => {
+            e.preventDefault();
+
+            const updatedData = {
+                firstName: document.getElementById("input-firstName").value.trim(),
+                lastName: document.getElementById("input-lastName").value.trim(),
+                dob: document.getElementById("input-dob").value,
+                phone: document.getElementById("input-phone").value.trim(),
+                address: document.getElementById("input-address").value.trim()
+            };
+
+            btnSave.innerText = "ĐANG LƯU...";
+            btnSave.disabled = true;
+            messageBox.classList.add("d-none", "alert-success", "alert-danger");
+
+            try {
+                await userService.updateProfile(updatedData);
+
+                messageBox.innerText = "Tuyệt vời! Thông tin đã được cập nhật thành công.";
+                messageBox.classList.add("alert-success");
+                messageBox.classList.remove("d-none");
+
+                // Tải lại trang sau 1.5 giây để load data mới
+                setTimeout(() => window.location.reload(), 1500);
+            } catch (error) {
+                console.error("Lỗi cập nhật hồ sơ:", error);
+                messageBox.innerText = error.message || "Có lỗi xảy ra, không thể cập nhật.";
+                messageBox.classList.add("alert-danger");
+                messageBox.classList.remove("d-none");
+            } finally {
+                btnSave.innerText = "LƯU THAY ĐỔI";
+                btnSave.disabled = false;
+            }
+        });
+    });
+</script>
