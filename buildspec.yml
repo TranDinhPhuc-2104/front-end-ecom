@@ -9,7 +9,7 @@ phases:
     commands:
       - echo Logging in to Amazon ECR...
       - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 415642395658.dkr.ecr.us-east-1.amazonaws.com
-      - REPOSITORY_URI=415642395658.dkr.ecr.us-east-1.amazonaws.com/shoeshop
+      - REPOSITORY_URI=415642395658.dkr.ecr.us-east-1.amazonaws.com/front-end-ecom
       - IMAGE_TAG=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
 
   build:
@@ -24,7 +24,6 @@ phases:
       - docker push $REPOSITORY_URI:latest
       - docker push $REPOSITORY_URI:$IMAGE_TAG
       - printf '[{"name":"Main","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
-      - DOCKER_CONTAINER_NAME=front-end-ecom
 
 artifacts:
   files:
